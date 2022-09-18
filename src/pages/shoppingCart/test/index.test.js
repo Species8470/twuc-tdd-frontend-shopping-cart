@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import {render} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
 import ShoppingCart from '../index';
@@ -8,5 +8,15 @@ describe('Shopping Cart', () => {
     const { getByText } = render(<ShoppingCart/>);
 
     expect(getByText('Shopping Cart')).toBeInTheDocument();
+  });
+
+  test('should shpw empty shopping cart, given empty list', () => {
+    const { getByText, container } = render(<ShoppingCart/>);
+    const products = container.getElementsByClassName('product');
+
+    expect(products).toHaveLength(0);
+    expect(getByText('商品名称')).toBeInTheDocument();
+    expect(getByText('单价')).toBeInTheDocument();
+    expect(getByText('数量')).toBeInTheDocument();
   });
 });
