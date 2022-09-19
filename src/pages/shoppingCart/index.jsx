@@ -27,8 +27,8 @@ const ShoppingCart = () => {
           {products.map(product => (
             <tr className="table-row product">
               <td className="table-cell align-left">{product.name}</td>
-              <td className="table-cell align-left">{product.price}</td>
-              <td className="table-cell align-left">{product.count}</td>
+              <td className="table-cell align-right">{product.price}</td>
+              <td className="table-cell align-right">{product.count}</td>
             </tr>
           ))}
         </tbody>
