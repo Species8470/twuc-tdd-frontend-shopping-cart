@@ -25,13 +25,14 @@ const ShoppingCart = () => {
         </thead>
         <tbody>
           {products.map(product => (
-            <tr className="table-row product">
+            <tr key={product.id} className="table-row product">
               <td className="table-cell align-left">{product.name}</td>
               <td className="table-cell align-right">{product.price}</td>
               <td className="table-cell align-right">{product.count}</td>
             </tr>
           ))}
         </tbody>
+
       </table>
     </div>
   );
