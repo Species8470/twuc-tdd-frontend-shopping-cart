@@ -41,4 +41,11 @@ describe('Shopping Cart', () => {
     });
   });
 
+  test('should display total price and purchase button', () => {
+    getProducts.mockResolvedValue(mockProducts);
+    const {getByText, getByRole} = render(<ShoppingCart/>);
+
+    expect(getByText('支 付')).toBeInTheDocument();
+    expect(getByRole('button')).toBeInTheDocument();
+  });
 });

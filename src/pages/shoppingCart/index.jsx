@@ -5,12 +5,20 @@ import {getProducts} from '../../service';
 const ShoppingCart = () => {
 
   const [products, setProducts] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     getProducts().then(products => {
       setProducts(products);
+      calculatePrice(products);
     });
   }, []);
+
+  const calculatePrice = (products) => {
+    let price = 0;
+    products.forEach(product => price += product.price);
+    setTotal(price);
+  };
 
   return (
     <div className="wrapper">
@@ -32,8 +40,11 @@ const ShoppingCart = () => {
             </tr>
           ))}
         </tbody>
-
       </table>
+      <section className="operation">
+        <h2 className="total">合计: {total}</h2>
+        <button className="purchase">支 付</button>
+      </section>
     </div>
   );
 };
